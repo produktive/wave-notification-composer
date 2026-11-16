@@ -1,0 +1,2 @@
+@php($unreadCount = app(\Wave\Plugins\NotificationComposer\Support\UnreadCount::class)->get())
+<span x-data="{ count: {{ $unreadCount }} }" x-on:notification-count-updated.window="count = $event.detail.count" x-show="count > 0" x-cloak :aria-label="count + ' unread notifications'" class="ml-1 inline-flex min-w-5 items-center justify-center rounded-full bg-primary-600 px-1.5 py-0.5 text-xs font-semibold text-white" x-text="count > 99 ? '99+' : count">{{ $unreadCount > 99 ? '99+' : $unreadCount }}</span>
